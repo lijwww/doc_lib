@@ -1,0 +1,2 @@
+[daloradius]
+yum install httpd  php php-mysql php-gd php-pear-DB  -y

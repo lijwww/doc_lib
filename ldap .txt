@@ -1,0 +1,91 @@
+
+
+
+[安装ldap]
+yum install openldap-* -y
+
+cp /usr/share/openldap-servers/slapd.conf.obsolete  /etc/openldap/slapd.conf
+cp /usr/share/openldap-servers/DB_CONFIG.example  /var/lib/ldap/DB_CONFIG
+
+#删除初始管理数据
+rm -rf /etc/openldap/slapd.d/*
+
+chown -R ldap:ldap /var/lib/ldap
+chown -R ldap:ldap /etc/openldap/
+
+service slapd restart
+slapd -d 1          #调试运行
+
+sed -i 's/my-domain/adwo/g' /etc/openldap/slapd.conf
+
+slaptest  -f /etc/openldap/slapd.conf -F /etc/openldap/slapd.d #测试并生成配置文件：
+chown -R ldap:ldap /etc/openldap/slapd.d
+service slapd restart
+
+[导出数据] 
+
+yum install migrationtools -y
+cd /usr/share/migrationtools/
+vim  migrate_common.ph
+    $DEFAULT_MAIL_DOMAIN
+    $DEFAULT_BASE
+#生成数据
+./migrate_base.pl > /tmp/base.ldif
+./migrate_passwd.pl  /etc/passwd > /tmp/passwd.ldif
+./migrate_group.pl  /etc/group > /tmp/group.ldif
+#正式导入数据
+ldapadd -x -D "cn=Manager,dc=adwo,dc=com" -w secret -f /tmp/base.ldif 
+ldapadd -x -D "cn=Manager,dc=adwo,dc=com" -w secret -f /tmp/passwd.ldif
+ldapadd -x -D "cn=Manager,dc=adwo,dc=com" -w secret -f /tmp/group.ldif
+service slapd restart
+
+[安装web管理工具]
+
+yum install httpd php php-ldap -y
+
+rpm -ivh ldap-account-manager-5.1-0.fedora.1.noarch.rpm
+
+/usr/share/ldap-account-manager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+radtest lijw lijunwei  127.0.0.1:18120 0 testing123
+
+
+authconfig --enablemkhomedir --disableldaptls --enableldap --enableldapauth --ldapserver=ldap://127.0.0.1 --ldapbasedn="dc=lijw,dc=net" --enableshadow  --enablesssd  --update
+Authentication service cannot retrieve authentication info
+认证服务不能获取认证信息
+
+
+
+Server is unwilling to perform
+pam_ldap：试图绑定错误
+
+
+AuthType Basic
+AuthName "test Login"
+AuthzLDAPAuthoritative on
+AuthLDAPURL ldap://127.0.0.1:389/ou=People,dc=lijw,dc=net
+require valid-user
+
+

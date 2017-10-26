@@ -1,0 +1,45 @@
+[svn安装]
+yum install subversion -y
+
+mkdir -p /data/svndata
+
+svnadmin create /data/svndata/repo
+
+cp /data/svndata/repo/conf/* /data/svndata/
+
+--修改配置文件
+sed -i -e '/anon-access/s/# //g'  -e '/auth-access/s/# //g'    -e '/password-db = passwd/s/^.\+$/password-db = \/data\/svndata\/passwd/g' -e '/authz-db = authz/s/^.\+$/authz-db =  \/data\/svndata\/authz/g'  -e /use-sasl = true/s/# //g'  /data/svndata/repo/conf/svnserve.conf
+
+--启动svn
+svnserve -d -r /data/svndata/ --log-file=/data/svndata/gen.log
+
+
+
+[ldap配置]
+yum install *sasl* -y
+--验证查看是否支持ldap
+saslauthd  -v
+
+--修改/etc/sysconfig/saslauthd
+MECH=ldap
+
+--修改/etc/saslauthd.conf
+ldap_servers: ldap://127.0.0.1/
+#ldap_bind_dn: cn=admin, dc=lijw, dc=net
+#ldap_bin_pw: secret
+ldap_search_base: ou=People, dc=lijw, dc=net
+ldap_filter: uid=%U
+ldap_password_attr: userPassword
+
+--启动服务
+/etc/init.d/saslauthd start
+
+--测试
+ testsaslauthd -u lijw -p lijunwei
+
+--配置sasl svn       配置文件 /etc/sasl2/svn.conf
+pwcheck_method: saslauthd
+mech_list: plain login
+
+--授权文件authz
+ldap_user=lijw
