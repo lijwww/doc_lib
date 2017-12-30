@@ -1,4 +1,4 @@
 #文档管理版本库
 1,升级python
 2,部署nginx+php
-3,
+3,openssl升级,nginx升级openssl模块

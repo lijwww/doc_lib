@@ -1,0 +1,6 @@
+space 帮助
+[space] w v
+[space] w s
+[space] w F  #新建标签  gt/Gt切换
+[space] w l
+:SPUpdate #更新spacevim

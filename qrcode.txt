@@ -1,0 +1,8 @@
+qrencode 
+-- 终端生成二维码
+
+echo 'test' | qrencode -o - -t UTF8 
+
+-- 解码 Image::DecodeQR
+依赖 apt install libdecodeqr-dev  libopencv-dev   -y
+
