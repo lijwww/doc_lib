@@ -1,0 +1,4 @@
+-- 目录列表
+autoindex on;
+default_type 'text/html';
+charset utf-8;

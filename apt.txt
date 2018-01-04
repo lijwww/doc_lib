@@ -2,3 +2,8 @@
 root@lijw:~# apt-file  find decodeqr.h
 libdecodeqr-dev: /usr/include/decodeqr.h
 
+--dpkg
+dpkg -l 
+dpkg -L
+dpkg -s 
+dpkg -c 

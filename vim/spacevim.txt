@@ -1,0 +1,55 @@
+[space] w v
+space 帮助
+[space] w s
+[space] w F  #新建标签  gt/Gt切换
+[space] w l
+:SPUpdate #更新spacevim
+:SPUpdate Spacevim 
+space j D //其他窗口打开文件浏览器
+b 为buffer
+p 为projcet
+s 为search
+h 为help
+t 为见面元素
+:h Spacevim 访问spacevim的帮助文档
+
+dein.vim 实现按需加载
+语法树  文件树 定义窗口
+
+:h rtp   
+[space]  T  n  //切换下一个随机主题
+[space]  T  s  //通过Unite 选择主题
+[space]  t h h //高亮当前行
+[space]  t b //切换背景色
+[space] t t //打开tab管理器 
+:set modifiable  // 当vim提示modifiable is off
+
+[space] t 8 //高亮80行后的信息
+[space] t f //高亮第80列
+[space] t s //语法检查
+[space] t S //拼写检查
+[space] t w //行尾拼写检查
+
+
+--Cannot write , 'buftype' option is set 
+:setlocal buftype=
+
+SPC h SPC 
+[space] h i 
+[space] h k 
+[space] h m
+
+[space] h l //现实spacevim可用模块]
+\ l p       //列出已经安装的插件]  支持模糊搜索，回车打开插件的官网
+[space] w c //阅读模式
+[space] w =
+[space] w F //新建一个标签页
+[space] w m //最小化-最大化一个窗口
+[space] w o //按序切换标签页
+
+[space]  b w //切换只读权限
+[sapce] b N l //在右侧新建一个窗口，并在其中新建空白buffer
+[space] f C d 
+[space] f t //打开文件树侧栏
+[space] f s //保存当前文件
+
