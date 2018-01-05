@@ -8,3 +8,20 @@ docker-compose --version
 #install docker-machine
 
 $ curl -L https://github.com/docker/machine/releases/download/v0.13.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && chmod +x /tmp/docker-machine && sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
+
+
+#docker 从入门到实践
+https://www.gitbook.com/book/yeasy/docker_practice/details
+http://files.git.oschina.net/group1/M00/02/A5/PaAvDFpN10qAa3qcAGiFT1bGFtw267.pdf?token=152b48c9cba87a38ed827193383e565e&ts=1515120312&attname=docker_practice.pdf
+
+
+
+
+#
+docker save (docker images | grep beta | awk {'print $1'}) -o images
+
+# 查询正在运行的容器
+docker ps -a
+
+# 删除运行的容器
+docker rm -f $(docker ps -aq)
