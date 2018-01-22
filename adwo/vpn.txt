@@ -1,0 +1,5 @@
+mark static
+ip firewall mangle add chain=prerouting action=mark-routing new-routing-mark=r203 passthrough=yes src-address=192.168.1.203 comment=wangchuanhui
+ip firewall nat add chain=dstnat action=dst-nat to-addresses=8.8.8.8 to-ports=53 protocol=udp src-address=192.168.0.5 src-port="" dst-port=53
+ip firewall nat add chain=srcnat action=masquerade src-address=192.168.0.5 out-interface=pptp-out1
+

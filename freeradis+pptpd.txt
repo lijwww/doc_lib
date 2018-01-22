@@ -86,3 +86,7 @@ echo "localhost  testing123" >> /etc/ppp/radius/etc/servers
 http://lansgg.blog.51cto.com/5675165/1225461
 
 pptpsetup --create test --server 192.168.1.7 --user lijw --password lijunwei --encrypt --start
+
+
+[freeradis server限制同时登陆人数]
+Simultaneous-Use

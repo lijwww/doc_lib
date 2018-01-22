@@ -1,0 +1,57 @@
+
+[名词解析]
+成员服务提供者 MSP
+
+docker  docker.io 
+/etc/init.d/docker start
+https://github.com/hyperledger/fabric.git
+https://github.com/hyperledger/fabric-samples.git
+https://hyperledgercn.github.io/hyperledgerDocs/
+//中文官网文档
+byfn.sh -m generate
+./byfn.sh -m up
+./byfn.sh -m down
+peer chaincode install -n <chaincode_name> -v 1.0 -p
+github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+peer chaincode install -n mycc -v 1.0 -p
+/opt/gopath/src/github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+docker exec -it cli bash
+docker logs -f cli
+
+peer chaincode install -n mycc -v 1.0 -p
+github.com/chaincode/chaincode_example02/go/
+peer chaincode install -n mychannel -v 1.0 -p
+github.com/chaincode/chaincode_example02/go/
+
+小蚁币
+http://www.xtecher.com/Mobile/Project/view?pid=1127
+https://neo.org/
+http://antcha.in/blocks
+Harbor 
+
+[cryptogen tool not found. exiting]
+bash bootstrap-1.0.0-rc1.sh 
+
+docker-compose -f docker-compose-cli.yaml up -d
+
+/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+/root/fabric-samples/basic-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+docker rm -f $(docker ps -aq)
+
+     export CHANNEL_NAME=mychannel
+      
+      peer chaincode query -C $CHANNEL_NAME -n mycc -c
+      '{"Args":["query","a"]}'
+#创建通道
+
+      peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f
+      ./channel-artifacts/channel.tx --tls $CORE_PEER_TLS_ENABLED --cafile
+      /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+      查看链码日志
+       docker logs dev-peer0.org2.example.com-mycc-1.0
+
+        /bin/bash -c './scripts/script.sh mychannel ${DELAY}; sleep 60'
+? 链码服务
+

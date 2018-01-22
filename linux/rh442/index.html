@@ -1,0 +1,35 @@
+ltrace -c udpatedb
+strace -c updatedb
+-f  监控子进程调用
+
+
+
+buffer cache  文件的
+page cache   永远都是跟文件相关的
+
+[limit resouce usage]
+--> pam
+ 限制用户的资源
+ /etc/security/limits.conf
+ limits.d/*.conf
+ ?限制cpu
+  普通用户可以更改到 limit的最大值. 可以自定义比最大值小的. 修改直后无法再改大,只能改小(随session)
+  ?限制内存
+  top 
+  VIRT 表示程序希望要多少内存
+  RSS   驻留内存
+  
+  bigmem
+  ?限制进程数
+  kernel.threads-max 
+  ulimit -n
+  ***cgroup 应用程序的质量管理
+  
+  /etc/init.d/cgconfig
+  cgred  //cgroup rule engine
+  lssubsys -m
+  
+  lscpu 
+  On-line CPU(s) list:   0-3
+  echo 0 >  /sys/devices/system/cpu/cpu3/online
+  On-line CPU(s) list:   0-2

@@ -1,6 +1,4 @@
-[space] w v
-space 帮助
-[space] w s
+[space] w v space 帮助 [space] w s
 [space] w F  #新建标签  gt/Gt切换
 [space] w l
 :SPUpdate #更新spacevim
@@ -53,3 +51,7 @@ SPC h SPC
 [space] f t //打开文件树侧栏
 [space] f s //保存当前文件
 
+
+[帮助文档]
+https://everettjf.gitbooks.io/spacevimtutorial/content/advance/3.html
+https://spacevim.org/README_zh_cn/
