@@ -1,0 +1,10 @@
+[光盘]
+eject    //弹出光驱
+eject -t //弹回光驱
+[电源设置]
+
+[无线设置]
+wpa_supplicant  //rpm
+
+wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+dhclient wlan0

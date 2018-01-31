@@ -1,0 +1,1 @@
+ 系统日志syslog不记录snmpd日志

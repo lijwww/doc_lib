@@ -1,5 +1,6 @@
 -- 不同分支有不同的文件， 查找文件在哪个分支下面
 -- 文件的修改记录
 -- 分支
+--当前分支 在某个tag前还是后面
 git branch -a
 git branch  -b dev orgin/dev

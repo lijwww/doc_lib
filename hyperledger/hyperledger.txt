@@ -7,6 +7,7 @@ docker  docker.io
 https://github.com/hyperledger/fabric.git
 https://github.com/hyperledger/fabric-samples.git
 https://hyperledgercn.github.io/hyperledgerDocs/
+https://github.com/hyperledger/fabric-sdk-java
 //中文官网文档
 byfn.sh -m generate
 ./byfn.sh -m up
@@ -55,3 +56,13 @@ docker rm -f $(docker ps -aq)
         /bin/bash -c './scripts/script.sh mychannel ${DELAY}; sleep 60'
 ? 链码服务
 
+Dockerfile中的指令与本地编译过程十分类似，这里给笔者编写的fabric-baseimage镜像、fabric-peer镜像、fabric-orderer镜像等关键镜像的Dockerfile，供读者参考使用。 
+1）fabric-baseimage镜像 
+fabric-baseimage镜像的参考Dockerfile如下，基于golang:1.8镜像生成，可以作为Go链码容器的基础镜像。该镜像中包含了Farbic相关的代码，并安装了一些有用的工具，包括chaintools、gotools、configtxgen、configtxlator和cryptogen等。 
+该Dockerfile也可以从https://github.com/yeasy/docker-hyperledger-fabric-base下载获取 
+2)fabric-peer镜像 
+fabric-peer镜像基于fabric-baseimage生成，编译安装了peer命令。参考Dockerfile可以从https://github.com/yeasy/docker-hyperledger-fabric-peer下载获取 
+3)fabric-orderer镜像 
+fabric-orderer镜像基于fabric-baseimage生成，编译安装了orderer命令。参考Dockerfile可以从https://github.com/yeasy/docker-hyperledger-fabric-orderer下载获取 
+4)fabric-ca镜像 
+读者可以参考如下Dockerfile内容，生成fabric-ca镜像。参考Dockerfile可以从https://github.com/yeasy/docker-hyperledger-fabric-ca下载获取

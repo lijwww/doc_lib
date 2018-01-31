@@ -1,0 +1,13 @@
+[使用]
+(1)
+tftp 192.168.1.2
+tftp>get <download file> 
+tftp>put <upload file>
+tftp>q
+(2)
+    tftp -g -r embedexpert 192.168.1.2
+[参数]
+-g 表示下载文件 (get)
+-p 表示上传文件 (put)
+-l 表示本地文件名 (local file)
+-r 表示远程主机的文件名 (remote file)

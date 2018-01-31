@@ -1,2 +1,6 @@
 http://openresty.org/cn/installation.html
-
+[OpenResty 最佳实践]
+https://www.gitbook.com/book/moonbingbing/openresty-best-practices/details
+[扩展]
+https://github.com/iresty/nginx-lua-module-zh-wiki
+https://github.com/openresty/lua-resty-websocket

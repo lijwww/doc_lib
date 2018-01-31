@@ -33,3 +33,7 @@ https://exchange.nagios.org/directory/Plugins
 http://www.downcc.com/font/128037.html
 
 #sstp
+#Vagrant
+#gradle //自动构建工具
+#curses (ncurses)
+

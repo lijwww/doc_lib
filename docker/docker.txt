@@ -2,6 +2,14 @@
 docker machine
 Docker Machine 是 Docker 官方提供的一个工具，它可以帮助我们在远程的机器上安装Docker，或者在虚拟机 host 上直接安装虚拟机并在虚拟机中安装 Docker。
 docker compose  Dockerfile 的批处理
+[配置]
+--国内镜像站
+https://lug.ustc.edu.cn/wiki/mirrors/help/docker  
+--
+[docker-ce]
+--docker-ce 阿里云
+https://yq.aliyun.com/articles/110806?spm=a2c4e.11153959.blogcont7695.11.1646a473uNBdcg
+--
 #install docker-compose
 
 sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose

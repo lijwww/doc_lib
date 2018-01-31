@@ -1,0 +1,1 @@
+ ps aux|sort -n -k5| awk '{print $6,$2}'|perl -pe '@SI=qw(K M G T P); s:^(\d+?)((\d\d\d)*)\s:$1." ".$SI[((length $2)/3)]."\t":e'
