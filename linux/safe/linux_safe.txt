@@ -47,3 +47,9 @@ iptables -t nat -A PREROUTING  -s 192.168.56.10/24 -p tcp -j DNAT
     Chain POSTROUTING (policy ACCEPT)
     target     prot opt source               destination         
     MASQUERADE  all  --  0.0.0.0/0            0.0.0.0/0 
+
+[site]
+https://github.com/s1kr10s/Struts2Shell
+
+http://www.91ri.org/
+https://n0where.net/

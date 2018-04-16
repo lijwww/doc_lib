@@ -1,0 +1,79 @@
+
+更改密码
+username adwo privilege 15 secret adwo8888
+
+
+
+
+
+配置dhcp 
+
+service dhcp
+ip dhcp pool "adwo"
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 219.232.48.61
+lease 30
+end
+wr     
+#静态分配
+Router(config)#ip dhcp pool static_1
+Router(dhcp-config)#host 192.168.0.10 255.255.255.0
+Router(dhcp-config)#client-identifier 0108002781604C
+
+
+
+远程登陆
+router#configure terminal
+router(config)#username username privilege 15 secret password
+router(config)#ip http server (the insecure method)
+    router(config)#ip http secure-server (the secure method)
+    router(config)#ip http authentication local
+    router(config)#line vty 0 4
+    router(config-line)#login local
+    router(config-line)#transport input telnet (the insecure method)
+    router(config-line)#transport input telnet ssh (the insecure and insecure
+            method)
+    router(config-line)#transport input ssh (the secure method)
+
+
+#外网网关
+    ip default-gateway 49.4.173.145
+
+#查看
+    ssh 
+    show ip ssh
+    show ip access-list
+    show ip nat translations
+    show ip interface brief
+    show ip dhcp binding
+    show ssh vty 0
+    show mls qos interface
+    show arp
+    //查看限速设置
+    sh policy-map interface g0/1
+    设置时间：
+    clock set 11:01:00 2 Mar 2017
+    R1(config)#clock timezone GMT + 8
+
+#当然配置保存
+    copy running-config startup-config 
+
+#关闭路由功能
+    no ip routing
+#snat
+#端口映射
+    ip nat inside source static tcp 192.168.0.102 3389 49.4.173.151 53389
+    extendable 
+#防火墙
+
+    access-list100 permit tcp 192.168.0.0 0.0.0.255 192.168.0.101 0.0.0.0 eq
+    ssh
+    access-list100 deny tcp 0.0.0.0 255.255.255.255 49.4.173.151 0.0.0.0 eq 22
+
+#vpn(vpdn)设置
+
+#qos
+
+
+

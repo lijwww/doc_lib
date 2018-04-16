@@ -1,0 +1,11 @@
+alias ..= 'cd ..'
+alias ...= 'cd ../../../'
+alias ....= 'cd ../../../../'
+alias .....= 'cd ../../../../'
+alias .4= 'cd ../../../../'
+alias .5= 'cd ../../../../..'
+alias grep = 'grep --color=auto'
+alias egrep = 'egrep --color=auto'
+alias fgrep = 'fgrep --color=auto'
+#让 mount 命令的输出更漂亮，更方便人类阅读
+alias mount = 'mount |column -t'

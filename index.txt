@@ -37,3 +37,32 @@ http://www.downcc.com/font/128037.html
 #gradle //自动构建工具
 #curses (ncurses)
 
+
+#本地 ansible帮助文档  web浏览
+https://github.com/alibaba/ansible-provider-docs
+
+
+[shadowsocks]
+https://github.com/shadowsocks/shadowsocks/tree/master
+https://github.com/shadowsocks/shadowsocks-windows
+
+
+[otunnel]
+otunnel listen :10011 -d -s abc123
+screen -dmS otrunnel /opt/otunnel/otunnel connect www.lijw.net:10011 -s abc123 -t r:192.168.88.55:80::8001
+
+[frp]
+
+
+
+[pi]
+
+-> 监控wlan0 ,如果无法访问互联网,重启网卡或者重启系统
+-> 监控frpc启动
+-> nginx 
+
+
+[]
+### 根据长度来排序每一行
+ perl -lne '$l{$_}=length;END{for(sort{$l{$a}<=>$l{$b}}keys %l){print}}' < file | tail
+
