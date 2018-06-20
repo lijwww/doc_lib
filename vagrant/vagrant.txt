@@ -25,3 +25,5 @@ vagrant destroy
 #安装插件
 https://github.com/leighmcculloch/vagrant-docker-compose
 
+
+
