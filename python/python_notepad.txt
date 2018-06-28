@@ -1,0 +1,258 @@
+python培训内容
+               主讲人 李杰---Alex 是TriAquae开源运维管理软件的创始人
+
+一、python介绍
+
+TriAquae:系统批量执行管理（web界面，基于ssh，无需其他服务），资产管理（取系统信息，宕机显示，避免手工操作），监控
+
+
+二、python讲解
+1、安装
+portablepython 移动python
+
+2、语法格式
+缩进
+引号   ' '  ''' '''   ""
+变量   不能数字开头
+
+字符串
+name=raw_input('shuru')
+限制为整数
+int(raw_input('shuru'))
+
+
+for i in range(1,100,2):
+	print i
+
+
+#!/usr/bin/python
+i=1
+while i < 100:
+        if i == 27:
+                print 'I am %s' %i
+        elif i == 50:
+                print 'qita %s' %i
+        i = i + 1
+
+#!/usr/bin/python
+
+user1 = 'xuesong 1580'
+user2 = 'lisan 1590'
+user3 = 'zhangsi 1570'
+INPUT = raw_input('input')
+
+namelist=user1,user2,user3
+
+for i in namelist:
+        if INPUT in i:
+                print '%s info' % i
+else:
+        print "no %s" %i
+
+
+tab补全
+#!/usr/bin/python
+# tab.py
+import sys
+import readline
+import rlcompleter
+import atexit
+import os
+# tab completion
+readline.parse_and_bind('tab: complete')
+# history file
+histfile = os.path.join(os.environ['HOME'], '.pythonhistory')
+try:
+    readline.read_history_file(histfile)
+except IOError:
+    pass
+atexit.register(readline.write_history_file, histfile)
+
+python
+import tab
+		
+判断字符串个数
+name.count('aa')
+
+判断字符串位置
+name.index('')
+
+插入
+name.insert('')
+
+删除
+name.remove('')
+
+排序
+name.sort()
+
+删除最后一个
+name.pop()
+
+元组只能读，不能写
+job=('aa','bb','cc')
+
+
+
+#!/usr/bin/python
+
+user1=('xuesong','111111111','aaaa')
+user2=('hong','2222222','bbbbbb')
+user3=('lv','333333','cccccc')
+
+INPUT=raw_input('input')
+USER=user1,user2,user3
+for i in USER:
+        if INPUT == i[0]:
+                print i[1]
+else:
+        print 'NO'
+
+
+字典
+zidian={'hong':['1111','aaa'],'huang':['2222','bbb'],'lv':['333','ccc']}
+
+判断有没有这个内容
+cont.has_key('hong')
+
+取key
+cont.keys()
+
+for key,value in cont.items():
+	print 'name:%s info:%s' % (key,value)
+	
+
+cont['alex']
+
+增加字典内容
+cont['alex'][0] = 'aaa'
+b['name']=['age','aa']
+
+删除字典第一个值
+cont.popitem()
+
+删除字典内容
+del cont['xuesong']
+
+查询
+#!/usr/bin/python
+
+zidian={'hong':['1111','aaa'],'huang':['2222','bbb'],'lv':['333','ccc']}
+
+a=raw_input('key:')
+for key in zidian.keys():
+        if a == key:
+                print zidian[a]
+                break
+else:
+        print 'bu cun zai'
+
+增加
+#!/usr/bin/python
+
+#a=raw_input('name:')
+#b=raw_input('dianhua:')
+zidian={}
+while True:
+        a=raw_input('name:')
+        if a == 'end':
+                print zidian.items()
+                break
+        else:
+                b=raw_input('dianhua:')
+                zidian[a]=b
+
+
+import os
+import sys
+
+位置参数
+sys.argv()
+
+函数
+
+def sayHi():
+	print 'hole world'
+def sayHi2(name):
+	print 'hole world %s' % name
+
+	
+#!/usr/bin/python
+
+def say(name):
+        print 'hole world %s'%name
+
+a=raw_input('name:')
+say(a)
+
+全局变量
+global 变量
+
+
+#!/usr/bin/python
+
+def say(name,age=22,aa='111'):
+        b={}
+        b[name]=[age,aa]
+        return b
+a=raw_input('name:')
+f=say(a,aa='333')
+print type(f)
+print f
+
+[ x.split()[4] for x in df.split("\n") ] 
+
+os.popen('ls').readlines()
+
+d.startswith('sshd')
+
+查看服务状态
+#!/usr/bin/python
+import os
+
+def init(cmd):
+        print cmd
+        a=os.popen('ls /etc/init.d').readlines()
+        if cmd == 'quanbu':
+                for i in a:
+						#i中多\n 无法执行
+                        os.system('/etc/init.d/%s status' % i)
+        else:
+                for i in a:
+                        if i.startswith(cmd):
+                                os.system('/etc/init.d/%s status' % cmd)
+                                break
+                else:
+                        print 'server bu cun zai'
+a=raw_input('cmd:')
+init(a)
+
+
+读写文件
+#!/usr/bin/python
+
+f=file('7.py')
+
+while True:
+        line = f.readline()
+        if len(line) == 0:
+                break
+        print line,
+
+
+
+try:
+	input=int(raw_input('input:'))
+	break
+except ValueError:
+	print 'str'
+except KeyboardInterrupt:
+	不允许ctrl+c
+	
+	
+
+
+
+
+
+

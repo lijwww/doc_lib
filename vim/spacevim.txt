@@ -55,3 +55,25 @@ SPC h SPC
 [帮助文档]
 https://everettjf.gitbooks.io/spacevimtutorial/content/advance/3.html
 https://spacevim.org/README_zh_cn/
+
+
+[windows管理]
+SPC b D 选择一个窗口，并删除其 buffer
+
+[buffer管理]
+space tab  // 切换至前一个buffer
+SPC b d 删除当前 buffer，但保留 Vim 窗口
+SPC b C-d 删除其他 buffer
+SPC b e 清除当前 buffer 内容，需要手动确认
+[标签页]
+SPC w F 新建一个新的标签页
+
+[模块]
+space h l 
+[插件]
+
+[主题]
+\  l p 
+
+:SPDebugInfo! -- 获取日志
+SPC b h 打开 SpaceVim 欢迎界面

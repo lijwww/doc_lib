@@ -5,4 +5,8 @@ dhcpd
 rsync
 httpd 
 
+cobber 安装ubuntu
 
+知识点:
+  - preseed
+  - koan  客户端支持虚拟机安装和操作系统重新安装

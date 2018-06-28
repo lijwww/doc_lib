@@ -1,0 +1,26 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+#Vagrant.config(2) do |config|
+    #common config
+    config.vm.box = "centos"
+    config.vm.provider "virtualbox" do |vb|
+        vb.memory = "512"
+    end
+
+    # create some web server
+    (1..2).each do |i|
+        config.vm.define "node#{i}" do |web_config|
+            web_config.vm.hostname = "node#{i}"
+            web_config.vm.network "private_network", ip: "192.168.33.2#{i}"
+            #web_config.vm.network "forwarded_port", guest: 80, host: "808#{i}"
+        end
+    end
+
+    # create mgmt node
+    config.vm.define "kerberos" do |mgmt_config|
+        mgmt_config.vm.hostname = "kerberos"
+        mgmt_config.vm.network "private_network", ip: "192.168.33.11"
+        #mgmt_config.vm.provision "shell", path: "bootstrap-mgmt.sh"
+    end
+end

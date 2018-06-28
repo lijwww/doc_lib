@@ -1,0 +1,132 @@
+///R1 R2 trunk
+conf t
+int ran f1/0 -3
+sw t e d
+sw m t
+exit
+int ran f1/1 -2
+channel-g 3 mode on
+exit
+exit
+
+/////R1 vtp  
+vlan database
+vtp domain li
+vtp server
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+exit
+
+/////r1 ip + vrrp 
+conf t
+int vlan 10
+ip add 192.168.1.252 255.255.255.0
+vrrp 1 ip 192.168.1.254 
+vrrp 1 pri 150
+vrrp 1 pree
+int vlan 20
+ip add 192.168.2.252 255.255.255.0
+vrrp 2 ip 192.168.2.254 
+vrrp 2 pri 150
+vrrp 2 pree
+int vlan 30
+ip add 192.168.3.252 255.255.255.0
+vrrp 3 ip 192.168.3.254
+vrrp 3 pri 100
+vrrp 3 pree
+int vlan 40
+ip add 192.168.4.252 255.255.255.0
+vrrp 4 ip 192.168.4.254
+vrrp 4 pri 100
+vrrp 4 pree
+end
+
+
+/////r2 ip +vrrp
+conf t
+int vlan 10
+ip add 192.168.1.253 255.255.255.0
+vrrp 1 ip 192.168.1.254 
+vrrp 1 pri 100
+vrrp 1 pree
+int vlan 20
+ip add 192.168.2.253 255.255.255.0
+vrrp 2 ip 192.168.2.254 
+vrrp 2 pri 100
+vrrp 2 pree
+int vlan 30
+ip add 192.168.3.253 255.255.255.0
+vrrp 3 ip 192.168.3.254
+vrrp 3 pri 150
+vrrp 3 pree
+int vlan 40
+ip add 192.168.4.253 255.255.255.0
+vrrp 4 ip 192.168.4.254
+vrrp 4 pri 150
+vrrp 4 pree
+end
+
+/////r3
+conf t 
+int ran f1/2 -3
+sw t e d
+sw m t
+exit
+
+
+int f1/0
+sw a v 10
+int f1/1
+sw a v 20
+end
+/////r4
+conf t
+int f1/0
+sw a v 30
+int f1/1
+sw a v 40
+
+/////R5
+conf t
+int f0/0
+ip add 12.1.1.1 255.255.255.0
+ip nat outside
+no sh
+int f1/0
+no switchport
+ip add 192.168.10.1 255.255.255.0
+ip nat inside
+no sh
+int f1/1
+ip add 192.168.20.1 255.255.255.0
+ip nat inside
+no sh
+exit
+router ospf 100
+network 192.168.10.0 0.0.0.255 area 0
+network 192.168.20.0 0.0.0.255 area 0
+exit
+ip router 0.0.0.0 0.0.0.0 f1/0
+access-list 1 permit 192.168.0.0 0.0.255.255 
+ip nat inside sourece list 1 interface f0/0 overload
+
+/////R1---R2 f0/0 ip route
+conf t
+router ospf 100
+network 192.168.1.0 0.0.0.255 area 100
+network 192.168.2.0 0.0.0.255 area 100
+network 192.168.3.0 0.0.0.255 area 100
+network 192.168.4.0 0.0.0.255 area 100
+network 192.168.10.0 0.0.0.255 area 0
+//or
+network 192.168.20.0 0.0.0.255 area 0
+ip route 0.0.0.0 0.0.0.0 f0/0
+end
+
+
+
+
+
+
