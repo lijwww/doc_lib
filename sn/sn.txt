@@ -1,0 +1,9 @@
+vSphere RC Serial Keys:
+
+vSphere Enterprise Plus:
+
+    NN0U0-EYH50-18CD1-0JAHP-3H55L
+
+vCenter Server Standard:
+
+    0M2VK-9GLE3-N8398-0VC00-2CNHL
