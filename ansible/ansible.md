@@ -6,7 +6,6 @@ synchronize
 fetch
 lineinfile
 
-
 官网:   https://www.ansible.com/
 Tower:  http://www.ansible.com/tower
 Galaxy: https://galaxy.ansible.com/
@@ -21,3 +20,14 @@ ansible examples ：https://github.com/ansible/ansible-examples
 ansible-vim： https://github.com/pearofducks/ansible-vim
 可以高亮显示，语法检查
 books：  https://www.ansible.com/ebooks
+
+
+
+### ansilbe  in vagrant
+
+```
+$ vagrant init ansible/tower
+$ vagrant up --provider virtualbox
+$ vagrant ssh
+```
+

@@ -47,5 +47,17 @@ GlusterFS 看到大小不一致
 
 
 
+### 1.2 GlusterFS: {path} or a prefix of it is already part of a volume
 
+问题:  在创建volume时出现错误
+
+解决方案:
+
+```
+setfattr -x trusted.glusterfs.volume-id $brick_path
+setfattr -x trusted.gfid $brick_path
+rm -rf $brick_path/.glusterfs
+```
+
+[]: https://blog.csdn.net/xluren/article/details/43115729	"参考"
 
