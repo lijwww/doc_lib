@@ -1,0 +1,126 @@
+初始化安装  编译工具apt-get install flex bison  安装glusterfs需要
+
+
+
+分发机超过80%即可上线新的存储机器。
+
+1、当某个业务Gluster集群存储整体超过80%后，可以考虑添加存储，从z-backup层找到可用服务器
+2、需要上线服务器确认，确认是否可用
+3、清理服务器与tomcat、mysql相关目录,更新源
+  rm -r /var/www/dream/tomcat
+  rm -r /var/www/dream/mysql
+  apt-get update
+4、安装gluster、tomcat、mysql
+  登陆saltstack主机119.254.81.144
+  执行salt -E '要安装的主机hostname' cmd.run 'hostname' 查看返回信息是否一致，确认好要操作服务器
+   如命令：salt -E 'vdn44-stor-183.bokecc.com' cmd.run 'hostname'  查看vdn44.183存储服务器的主机名
+
+ · 然后安装gluster
+  salt -E '要安装的主机hostname' state.sls service.gluster.install -v --out-file=/tmp/glusterintall.log
+  如果安装不正常，则手动安装，安装文件位于81.144服务器上的/srv/saltonline/salt/base/service 目录。
+ 
+ ·安装tomcat、mysql
+  salt -E '要安装的主机hostname' state.sls service.videonodedep.depvdnode -v --out-file=/tmp/videonodep.log
+  如果安装不正常，则手动安装，安装文件位于81.144服务器上的/srv/saltonline/salt/base/service 目录
+
+5、到服务器上确认mysql和tomcat是否安装，端口是否开启，运行gluster，确认可用
+	/etc/init.d/glusterd status
+6、挂载/GlusterFS
+
+  首先登陆到要业务集群的一台存储服务器上，gluster peer probe <要添加服务器的内网ip>, 例 gluster peer probe 10.42.70.50
+  然后gluster peer status 查看是否声明成功，
+  例如：Hostname: 10.42.70.50
+       Uuid: bec272aa-cc7d-4c2f-97ff-1e51956b55fe
+       State: Peer in Cluster (Connected)
+
+  下一步添加birck
+   gluster volume add-brick Storage 10.42.70.50:/srv/gluster
+  可以使用gluster volume info查看是否添加成功
+  例如：Volume Name: Storage
+       Type: Distribute
+       Status: Started
+       Number of Bricks: 3
+       Transport-type: tcp
+       Bricks:
+       Brick1: 10.42.70.50:/srv/gluster
+       Brick2: 10.42.70.51:/srv/gluster
+       Brick3: 10.42.70.52:/srv/gluster
+  然后df -h查看/GlusterFs存储容量是否有增加
+  然后登陆到要添加的服务器上
+  chown -R phenix.phenix /srv/gluster
+  chown -R phenix.phenix /GlusterFS
+  确保这2个目录必须是phenix用户权限，否则视频分发会失败
+  挂载
+  mount -t glusterfs 127.0.0.1:/Storage /GlusterFS/
+  成功后 df -h查看是否挂载成功
+
+卸载时，卸载卷volume，再删除节点
+gluster volume remove-brick Storage 10.33.70.25:/srv/gluster
+gluster peer detach 10.33.70.25
+
+7、nginx部署（包含日志切割）
+puppet agent --test --onetime --environment proj
+
+登陆cc-b144.bokecc.com执行如下脚本。开机启动脚本即日志切割由salt自动同步。
+salt '要安装nginx和flume的服务器名称' state.sls base.crontab.flume -v
+
+salt '要安装nginx和flume的服务器名称' state.sls base.crontab.nginx -v
+
+salt '要安装nginx和flume的服务器名称' state.sls base.crontab.nginx_flume -v
+
+第7步，主要更新的解释为：
+####a，如果是cache机，更新配置文件和可执行程序，如果没有更新，则不操作。nginx和flume也执行同样的操作。
+b，如果是存储机，安装nginx程序，安装flume。存储开机启动脚本由salt自动同步，由于cache主机特殊性，cache开机启动脚本不同步。在cache上线时进行添加。
+
+########
+#8、建立存储及播放节点
+#
+#  对应业务的不同填写表格信息交给研发贺小龙
+#  具体业务具体分析，可以参照历史信息，或者打开Abext，点击播放矩阵，点c120，参照历史信息，填写下面的表格。
+#  例如：
+#  http://home.bokecc.com/posts/list/0/19867.page#136493  唱吧cm2业务表格填写
+#  http://home.bokecc.com/posts/list/0/19850.page#136502  普通商业b业务表格填写
+#  http://home.bokecc.com/posts/list/19659.page#135467    DRM加密d业务表格填写
+#  或查看研发协同任务http://home.bokecc.com/posts/list/0/16289.page#135723 查看填写的规则
+#########
+
+9、播放测试
+
+  tkey.sh脚本，time和key加密的播放测试视频，如果可以访问则正常
+  #!/bin/bash
+  time=`date +%s`
+  exptime=`expr $time + 7200`
+  key=`echo -n "lionheart@cc$exptime/flvs/vtest/38M.flv" | md5sum | awk '{print $1}'`
+  wget --spider "http://$1/$2/flvs/vtest/38M.flv?t=$exptime&key=$key"
+
+ 找服务器测试，如果返回如下信息，则表示正常：
+命令：bash key.sh 116.114.23.183 cp1
+
+Spider mode enabled. Check if remote file exists.
+--2015-04-02 14:01:47--  http://116.114.23.183/cp1/flvs/vtest/38M.flv?t=1427961707&key=eb0d81948e64e857026245582cfe27bd
+Connecting to 116.114.23.183:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 38081473 (36M) [video/x-flv]
+Remote file exists.
+10、开机启动脚本部署，目录权限检查
+   *开机脚本部署，将如下信息粘贴至/var/www/dream/ControlCenter/scripts/start-services.sh文件中，或者从其他线上存储服务器上拷贝过来一份。
+   #!/bin/bash
+    /var/www/dream/nagios/bin/nrpe -c /var/www/dream/nagios/etc/nrpe.cfg -d
+    /etc/init.d/snmpd start
+    /var/www/dream/mysql/bin/mysql.server start
+    sleep 30s
+    /var/www/dream/nginx/sbin/nginx
+    echo 'deadline' > /sys/block/sdb/queue/scheduler
+    /etc/init.d/glusterd start && mount -t glusterfs 127.0.0.1:/Storage /GlusterFS/ 
+    TomcatScripts='/var/www/dream/ControlCenter/scripts/start-tomcat.sh'
+    test -f "${TomcatScripts}" && /bin/bash "${TomcatScripts}"
+    CustomScripts="/var/www/dream/ControlCenter/scripts/custom.sh"
+    test -f ${CustomScripts} && /bin/bash ${CustomScripts}
+    /etc/init.d/salt-minion start
+  *检查服务器上的/srv/gluster和/GlusterFS是否为phenix权限，如果不是，设置成phenix.phenix权限。
+    然后将其他线上存储服务器的开机脚本/var/www/dream/ControlCenter/scripts/start-services.sh复制过来即可
+
+11、调整AB后台服务器层级，ab中更改。
+       将服务器从z-backup层改为对应的业务层中，可在abext存储中查看。
+12、查看此服务器上的tomcat进程，共计9个，针对8090-8098端口进行查看，查看是否能够打开。url 例：http://116.114.23.183:8090/servlet/rts
+       查看mysql进程，并尝试能否登陆，如果tomcat能打开，并且mysql也能登陆，则继续如下操作，否则。重新安装tomcat和mysql。重复任务4
