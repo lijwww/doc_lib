@@ -1,4 +1,0 @@
-指定mac(或者范围)不分发地址
-指定mac 分发指定的ip地址
-
-DHCPStatus

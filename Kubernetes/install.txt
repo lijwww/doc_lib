@@ -1,8 +1,0 @@
---使用kuberspay无坑安装生产级Kubernetes集群
-https://github.com/wiselyman/kubespray
---
-k8s的安全模式
-
-docker内部如何生成core文件到宿主机目录
-
-

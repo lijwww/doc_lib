@@ -1,8 +1,0 @@
-eggjs.org
-http://eggjs.org/zh-cn/tutorials/progressive.html
-
-前端管理工具 bower
-npm管理后台库
-
-[npm使用]
-npm install time   -g --unsafe-perm 

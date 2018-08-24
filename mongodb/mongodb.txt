@@ -1,6 +1,0 @@
-[启动命令]
-mongod --dbpath=/data/db/ --restnnnn
-
-
-[客户端工具]
-robo3t

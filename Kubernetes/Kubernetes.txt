@@ -1,9 +1,0 @@
-kubectl cluster-info
-kubectl version
-kubectl api-versions
-kubectl config view
-kubectl get no
-kubectl get <type> <name>
-kubectl discribe <type> <name>
-kubectl logs
-kubectl exec

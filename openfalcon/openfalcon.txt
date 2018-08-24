@@ -1,6 +1,0 @@
-[机房分区问题]
-Gateway
-https://github.com/open-falcon/falcon-plus/blob/master/modules/gateway/README.md
-
-
-?历史数据怎么删除

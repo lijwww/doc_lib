@@ -1,2 +1,0 @@
-[iptables]
---iptables 转发dhcp tftp ftp rsync  http到内网地址

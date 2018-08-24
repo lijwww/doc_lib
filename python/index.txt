@@ -1,9 +1,0 @@
-http://xael.org/pages/python-nmap-en.html
-lxml
-scrapy
-gRPC 
-pyecharts
-[命令行开发]
-colorama                                 //Cross-platform colored terminal text.
-
-

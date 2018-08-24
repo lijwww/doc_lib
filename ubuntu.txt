@@ -1,5 +1,0 @@
--- Capslk 映射为Ctrl
-// /etc/default/keyborad
-XKBOPTIONS="ctrl:nocaps"
-
---终端字体

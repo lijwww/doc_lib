@@ -1,4 +1,0 @@
-innodb_status_file
-performance_schema = off
-
-

@@ -1,9 +1,0 @@
- 系统日志syslog不记录snmpd日志
-
- https://asciinema.org/
-
- ps -Hacl -F S -A f
- 像ps -fu一样显示进程
-
-带有时间的 vmstat
- vmstat 1 | awk '{now=strftime("%Y-%m-%d %T "); print now $0}'

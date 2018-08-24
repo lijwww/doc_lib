@@ -1,7 +1,0 @@
-screen -ls
-screen -r 
-screen -S 
-
-
-CTRL+a 
-screen -dmS mycreen "command"
