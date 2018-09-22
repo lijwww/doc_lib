@@ -15,3 +15,15 @@
 | SQLite Expert Professional 5 | sqlite客户端      |      |
 | everything                   | 文件快速搜索工具  |      |
 
+
+
+
+
+
+waoffle  | redis aof文件分析工具
+
+
+
+
+### 可学习的项目
+- remuxme

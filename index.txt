@@ -89,3 +89,16 @@ http://www.mamicode.com/info-detail-1936084.html
 
 oracle 
 849667631@qq.com/Lijunwei1025
+
+#spacevim install 
+curl -sLf https://spacevim.org/install.sh | bash
+#spacevim uninstall
+curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
+#apt install lua5.1 lua5.1-dev liblua5.1-dev 
+
+
+#spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+
+puppet chef 配置文件统一管理 工具

@@ -11,3 +11,7 @@ wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 dhclient wlan0
 [禁用beep]
 setterm -blength 0
+
+
+[keyboard ]
+xmodmap 

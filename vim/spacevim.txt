@@ -77,3 +77,5 @@ space h l
 
 :SPDebugInfo! -- 获取日志
 SPC b h 打开 SpaceVim 欢迎界面
+apt install lua5.3 liblua5.3-dev
+--enable-terminal  --enable-luainterp --enable-rubyinterp --enable-pythoninterp
