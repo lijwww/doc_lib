@@ -1,0 +1,1 @@
+/var/www/srv/saltonline/salt/base/base/crontab/nginx.sls

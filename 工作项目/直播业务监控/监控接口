@@ -1,0 +1,98 @@
+
+
+
+view系统
+
+https://view.csslcloud.net/api/view/info?userid=B27039502337407C&roomid=E168A5123282B7159C33DC5901307461&t=jiankong
+
+return:
+{
+    "msg": "操作成功",
+    "success": true
+}
+判断：
+success == true
+
+
+api
+
+http://api.csslcloud.net/api/viewtemplate/info?userid=B27039502337407C&t=jiankong
+
+return:
+{
+    "result": "FAIL",
+    "reason": "invalid encrypt"
+}
+判断：
+result == 'FAIL'
+
+
+statis-api
+
+http://statis.csslcloud.net/api/user/lives?userid=B27039502337407C&starttime=2018-10-10%2001:02:03&endtime=2018-10-11%2001:02:03&type=1&t=jiankong
+
+return:
+{
+    "result": "FAIL",
+    "reason": "illegal request"
+}
+判断：
+result == 'FAIL'
+
+
+eva
+https://eva.csslcloud.net/api/questionnaire/info?t=jiankong
+
+return:
+{
+    "datas": {},
+    "errorCode": 0,
+    "msg": "操作失败",
+    "success": false
+}
+判断：
+success == false
+
+zeus-api
+https://zeus.csslcloud.net/api/rtmp/play?roomid=E168A5123282B7159C33DC5901307461&userid=B27039502337407C&t=jiankong
+
+return:
+{
+    "result": "OK"
+}
+判断：
+success == 'OK'
+
+dc
+http://document.csslcloud.net/servlet/docs?roomid=E168A5123282B7159C33DC5901307461&supportmode=2&t=jiankong
+
+return:
+{
+    "undoneDocs": [],
+    "result": "OK",
+    "docs": [],
+    "picDomain": "http://image.csslcloud.net",
+    "success": true
+}
+判断：
+success == true
+
+dw
+http://47.100.3.56:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://39.106.53.22:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://47.95.28.134:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://123.56.100.235:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://101.132.127.140:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://101.132.143.167:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+http://101.132.177.233:8080/servlet/docs/task/progress?docids=E168A5123282B7159C33DC5901307461&t=jiankong
+
+return:
+{
+    "result": "OK",
+    "doc": []
+}
+判断：
+result == 'OK'
+
+
+
