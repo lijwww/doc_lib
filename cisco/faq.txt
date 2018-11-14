@@ -3,3 +3,8 @@
   解决方式:升级系统版本
 ? console 重置密码
  解决方式: 
+
+#查看硬件温度
+ show environment all
+
+

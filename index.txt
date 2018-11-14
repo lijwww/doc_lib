@@ -31,6 +31,7 @@ https://exchange.nagios.org/directory/Plugins
 
 #字体
 http://www.downcc.com/font/128037.html
+Inconsolata #不用 因为= 显示为 -
 
 #sstp
 #Vagrant
@@ -101,4 +102,4 @@ curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 
-puppet chef 配置文件统一管理 工具
+puppet chef 配置文件管理 工具

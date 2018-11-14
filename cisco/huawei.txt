@@ -75,3 +75,58 @@ http://www.mamicode.com/info-detail-1716388.html
 
 
 #限速
+
+
+#snmp
+
+#沈阳机房示例
+
+#syslog
+
+#静态映射
+nat server global 111.206.170.242 inside 192.168.1.16
+#端口映射
+nat server protocol tcp global current-interface www inside 192.168.1.76 8380 description live_shanglt
+nat server protocol tcp global 111.206.170.245 9999 inside 192.168.1.122 9999
+#nat
+nat outbound 2000
+#路由
+ip route-static 192.168.100.0 255.255.255.0 1.1.1.2
+
+#显示当前接口配置
+dis this
+
+#过滤字符串
+dis mac-address | in 782b-cb3b-a356
+
+#时间配置
+
+#文件管理
+
+#温度
+dis health
+
+#日志
+dir 
+ftp 192.168.1.178
+put file
+
+
+
+#Error-down 机制
+
+#信息收集
+diagnose
+display diagnostic-information
+http://support.huawei.com/hedex/pages/EDOC100004506931187828/05/EDOC100004506931187828/05/resources/dc/dc_s_troubleshooting_info_0001.html
+#
+dis reset-reason
+
+
+#如何查看LLDP邻居信息
+采用命令display lldp neighbor [ interface interface-type interface-number ]查看全局或指定接口的邻居设备信息。
+采用命令display lldp neighbor brief查看邻居设备的概要信息。
+
+
+#display tcp status
+

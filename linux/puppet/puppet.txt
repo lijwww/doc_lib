@@ -1,0 +1,10 @@
+puppet kick 推送模式
+
+多个master  用nginx 反向代理 做负载均衡
+
+集中式配置管理工具
+
+mainfest: 清单
+  用于定义并保存资源
+
+
