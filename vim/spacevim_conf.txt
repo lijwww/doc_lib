@@ -1,0 +1,3 @@
+# 禁用vim真色
+ [options]
+enable_guicolors = false

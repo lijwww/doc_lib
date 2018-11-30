@@ -28,7 +28,8 @@ screan-length 0
 
 
 #时间设置 , ntp
-
+<Huawei> clock timezone BJ add 08:00:00
+<Huawei> clock datetime 20:10:0 2012-07-26
 
 #添加端口到vlan 
 interface interface-id 
@@ -129,4 +130,7 @@ dis reset-reason
 
 
 #display tcp status
+
+
+
 

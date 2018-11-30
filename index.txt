@@ -86,7 +86,8 @@ megacli -PdReplaceMissing -PhysDrv[32:3] -array2,row0 -a0
 
 megacli  -PDRbld -Start -PhysDrv [32:3] -a0
 http://www.mamicode.com/info-detail-1936084.html
-
+#查看重建进度
+MegaCli -PDRbld -ShowProg -PhysDrv[32:4] –aAll
 
 oracle 
 849667631@qq.com/Lijunwei1025

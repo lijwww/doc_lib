@@ -51,7 +51,6 @@ SPC h SPC
 [space] f t //打开文件树侧栏
 [space] f s //保存当前文件
 
-
 [帮助文档]
 https://everettjf.gitbooks.io/spacevimtutorial/content/advance/3.html
 https://spacevim.org/README_zh_cn/
@@ -79,3 +78,21 @@ space h l
 SPC b h 打开 SpaceVim 欢迎界面
 apt install lua5.3 liblua5.3-dev
 --enable-terminal  --enable-luainterp --enable-rubyinterp --enable-pythoninterp
+
+### 打开配置文件
+SPC f v d
+
+
+### colorscheme  
+
+[Vim 异步实时代码检索 ]
+
+[VIM 中 ctrl 相关的组合键的使用 ]
+
+[VIM 8 新特性之旅: 定时器 (timers) ]
+
+
+[python ide]
+https://spacevim.org/cn/use-vim-as-a-python-ide/
+[java ide]
+https://spacevim.org/cn/use-vim-as-a-java-ide/

@@ -9,3 +9,10 @@ CSR
 SSL
 TLS
 
+
+
+#pfx 转 pem
+openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
+
+#查看pem证书信息
+openssl x509 -in cert.pem -noout -text

@@ -27,3 +27,10 @@ waoffle  | redis aof文件分析工具
 
 ### 可学习的项目
 - remuxme
+
+# 下载地址
+### openvpn
+http://build.openvpn.net/downloads/releases/
+
+### puppet
+http://yum.puppetlabs.com/el/6/products/x86_64/
