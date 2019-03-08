@@ -104,3 +104,17 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 
 puppet chef 配置文件管理 工具
+
+
+
+[工具推荐]
+
+Tickeys  http://www.greenxf.com/soft/208679.html 
+
+
+[windows安装服务]
+nssm.exe install windows-agent
+
+
+[安全]
+https://github.com/Medicean/VulApps

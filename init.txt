@@ -1,19 +1,21 @@
-[linux]
-关闭selinux
+#[linux]
+#关闭selinux
 setenforce 0 
 
 
-[python]
+#[python]
 #升级python
 #时区
 cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 #更改pip源
 mkdir -p ~/.pip
-cat >~/.pip/pip.conf<EOF
+(
+cat<<EOF
 [global]
 index-url = http://pypi.douban.com/simple
 [install]
 trusted-host = pypi.douban.com
 EOF
+) > ~/.pip/pip.conf
 

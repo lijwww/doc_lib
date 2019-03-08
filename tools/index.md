@@ -31,6 +31,15 @@ waoffle  | redis aof文件分析工具
 # 下载地址
 ### openvpn
 http://build.openvpn.net/downloads/releases/
+### 谷歌浏览器
+https://www.iplaysoft.com/tools/chrome/
 
 ### puppet
 http://yum.puppetlabs.com/el/6/products/x86_64/
+
+
+#常用命令所属包
+dig dnsutils 
+
+
+#

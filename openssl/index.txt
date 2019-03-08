@@ -16,3 +16,5 @@ openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
 
 #查看pem证书信息
 openssl x509 -in cert.pem -noout -text
+# key,cer文件生成pfx文件
+openssl pkcs12 -export -out server.pfx -inkey server.key -in server.cer
